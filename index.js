@@ -11,7 +11,7 @@ const fileUpload = require('express-fileupload');
 const admin = require("firebase-admin");
 const app = express();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 // firebase service Account key
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 

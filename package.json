@@ -1,7 +1,7 @@
 {
   "name": "doctors-portal-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "this made for parctice",
   "main": "index.js",
   "engines": {
     "node": "16.x"
