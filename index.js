@@ -63,7 +63,7 @@ async function verifyToken(req, res, next) {
                  const email = req.query.email;
                  const  date = new Date(req.query.date).toLocaleDateString();
                  console.log(date);
-                 query = {email : email, date:date};
+                 query = {email: email, date:date};
                  console.log(query)
                  const cursor = appointmentCollection.find(query)
                  const appointments = await cursor.toArray();
@@ -82,8 +82,8 @@ async function verifyToken(req, res, next) {
                  const payment = req.body;
                  const filter = {_id:ObjectId(id)};
                  const updateDoc = {
-                     $set : {
-                         payment : payment
+                     $set: {
+                         payment: payment
                      }
                  };
                  const result = await appointmentCollection.updateOne(filter, updateDoc);
@@ -135,8 +135,8 @@ async function verifyToken(req, res, next) {
         const amount = paymentInfo.price*100;
         const paymentIntent = await stripe.paymentIntents.create({
             currency: 'usd',
-            amount : amount,
-            payment_method_types : ['card'],
+            amount: amount,
+            payment_method_types: ['card'],
         }) ;
         res.json({ clientSecret: paymentIntent.client_secret})  
         });
