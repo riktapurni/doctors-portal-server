@@ -11,7 +11,7 @@ const fileUpload = require('express-fileupload');
 const admin = require("firebase-admin");
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 // firebase service Account key
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
@@ -174,6 +174,6 @@ run().catch(console.dir);
 app.get('/', (req, res)=>{
     res.send('Running react app server');
 });
-app.listen ((process.env.PORT || 3000), ()=>{
+app.listen (port, ()=>{
     console.log("Running server on port", port)
 })
