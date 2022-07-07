@@ -23,9 +23,8 @@ app.use(fileUpload());
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.gu8vt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 console.log(uri);
-
 async function verifyToken(req, res, next) {
-    if (req.headers?.authorization?.startsWith('Bearer ')) {
+    if (req.headers?.authorization?.startsWith(' Bearer ')) {
         const token = req.headers.authorization.split(' ')[1];
 
         try {
@@ -39,8 +38,7 @@ async function verifyToken(req, res, next) {
     }
     next();
 }
-
-    async function run(){
+async function run(){
         try{
         await client.connect();
             console.log('connected to database');
@@ -72,8 +70,7 @@ async function verifyToken(req, res, next) {
              const result = await appointmentCollection.findOne(query);
              res.json(result);
              });
-
-             //update appointment
+            //update appointment
              app.put('/appointments/:id', async(req, res) => {
                  const id = req.params.id;
                  const payment = req.body;
@@ -86,8 +83,7 @@ async function verifyToken(req, res, next) {
                  const result = await appointmentCollection.updateOne(filter, updateDoc);
                  res.json(result);
              })
-
-             // POST Api for users
+        // POST Api for users
         app.post('/users', async(req, res)=>{
             const user = req.body;
             const result = await userCollection.insertOne(user);
@@ -110,7 +106,7 @@ async function verifyToken(req, res, next) {
             const user = req.body;
             // console.log('put', req.headers)
             console.log('put', req.headers.authorization)
-            const filter = {email:user.email};
+            const filter = {email: user.email};
             const updateDoc = { $set: {role:'admin'} };
             const result = await userCollection.updateOne(filter, updateDoc);
             res.json(result);
@@ -118,7 +114,7 @@ async function verifyToken(req, res, next) {
         //whether an user admin or not /73.6 module
         app.get('/users/:email', async(req, res) => {
         const email = req.params.email;
-        const query = { email:email };
+        const query = { email: email };
         const user = await userCollection.findOne(query);
         let isAdmin = false;
         if(user?.role === 'admin'){
