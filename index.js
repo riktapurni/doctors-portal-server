@@ -174,6 +174,6 @@ run().catch(console.dir);
 app.get('/', (req, res)=>{
     res.send('Running react app server');
 });
-app.listen (port, ()=>{
+app.listen ((process.env.PORT || 3000), ()=>{
     console.log("Running server on port", port)
 })
