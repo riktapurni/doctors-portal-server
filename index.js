@@ -56,7 +56,8 @@ async function run(){
              });
              app.get('/appointments', async(req, res) => {
                  const email = req.query.email;
-                 const  date = new Date(req.query.date).toLocaleDateString();
+                //  const  date = new Date(req.query.date).toLocaleDateString();deployer er age
+                 const  date = req.query.date;
                  console.log(date);
                  query = {email: email, date:date};
                  console.log(query)
